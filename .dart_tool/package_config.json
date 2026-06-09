@@ -9,7 +9,7 @@
     },
     {
       "name": "_flutterfire_internals",
-      "rootUri": "file:///C:/Users/prate/AppData/Local/Pub/Cache/hosted/pub.dev/_flutterfire_internals-1.3.41",
+      "rootUri": "file:///C:/Users/prate/AppData/Local/Pub/Cache/hosted/pub.dev/_flutterfire_internals-1.3.35",
       "packageUri": "lib/",
       "languageVersion": "3.2"
     },
@@ -333,9 +333,9 @@
     },
     {
       "name": "firebase_core",
-      "rootUri": "file:///C:/Users/prate/AppData/Local/Pub/Cache/hosted/pub.dev/firebase_core-3.4.0",
+      "rootUri": "file:///C:/Users/prate/AppData/Local/Pub/Cache/hosted/pub.dev/firebase_core-2.32.0",
       "packageUri": "lib/",
-      "languageVersion": "3.2"
+      "languageVersion": "2.18"
     },
     {
       "name": "firebase_core_platform_interface",
@@ -351,19 +351,19 @@
     },
     {
       "name": "firebase_messaging",
-      "rootUri": "file:///C:/Users/prate/AppData/Local/Pub/Cache/hosted/pub.dev/firebase_messaging-15.1.0",
+      "rootUri": "file:///C:/Users/prate/AppData/Local/Pub/Cache/hosted/pub.dev/firebase_messaging-14.9.4",
       "packageUri": "lib/",
-      "languageVersion": "3.2"
+      "languageVersion": "2.18"
     },
     {
       "name": "firebase_messaging_platform_interface",
-      "rootUri": "file:///C:/Users/prate/AppData/Local/Pub/Cache/hosted/pub.dev/firebase_messaging_platform_interface-4.5.43",
+      "rootUri": "file:///C:/Users/prate/AppData/Local/Pub/Cache/hosted/pub.dev/firebase_messaging_platform_interface-4.5.37",
       "packageUri": "lib/",
-      "languageVersion": "3.2"
+      "languageVersion": "2.18"
     },
     {
       "name": "firebase_messaging_web",
-      "rootUri": "file:///C:/Users/prate/AppData/Local/Pub/Cache/hosted/pub.dev/firebase_messaging_web-3.8.13",
+      "rootUri": "file:///C:/Users/prate/AppData/Local/Pub/Cache/hosted/pub.dev/firebase_messaging_web-3.8.7",
       "packageUri": "lib/",
       "languageVersion": "3.2"
     },
@@ -507,15 +507,15 @@
     },
     {
       "name": "google_mlkit_commons",
-      "rootUri": "file:///C:/Users/prate/AppData/Local/Pub/Cache/hosted/pub.dev/google_mlkit_commons-0.11.1",
+      "rootUri": "file:///C:/Users/prate/AppData/Local/Pub/Cache/hosted/pub.dev/google_mlkit_commons-0.7.1",
       "packageUri": "lib/",
-      "languageVersion": "3.8"
+      "languageVersion": "2.16"
     },
     {
       "name": "google_mlkit_text_recognition",
-      "rootUri": "file:///C:/Users/prate/AppData/Local/Pub/Cache/hosted/pub.dev/google_mlkit_text_recognition-0.15.1",
+      "rootUri": "file:///C:/Users/prate/AppData/Local/Pub/Cache/hosted/pub.dev/google_mlkit_text_recognition-0.12.1",
       "packageUri": "lib/",
-      "languageVersion": "3.8"
+      "languageVersion": "2.16"
     },
     {
       "name": "graphs",

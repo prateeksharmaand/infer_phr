@@ -1,61 +1,45 @@
 workflows:
-  ios-app-store:
-    name: Infer PHR — iOS App Store
-    max_build_duration: 60
-    instance_type: mac_mini_m2
+ios-app-store:
+name: Infer PHR iOS
 
-    working_directory: flutter_phr
+```
+instance_type: mac_mini_m2
 
-    environment:
-      flutter: stable
-      xcode: latest
-      cocoapods: default
-      vars:
-        BUNDLE_ID: com.infer.care
-      ios_signing:
-        distribution_type: app_store
-        bundle_identifier: com.infer.care
+max_build_duration: 60
 
-    scripts:
-      - name: Get Flutter packages
-        script: |
-          flutter pub get
+environment:
+  flutter: stable
+  xcode: latest
 
-      - name: Install CocoaPods
-        script: |
-          cd ios
-          pod install
+scripts:
+  - name: Flutter Clean
+    script: |
+      flutter clean
+      flutter pub get
 
-      - name: Build iOS (release)
-        script: |
-          flutter build ios --release --no-codesign
+  - name: Update CocoaPods
+    script: |
+      sudo gem install cocoapods
+      pod repo update
 
-      - name: Archive & export IPA
-        script: |
-          xcode-project use-profiles
+  - name: Install Pods
+    script: |
+      cd ios
+      rm -rf Pods
+      rm -rf Podfile.lock
+      pod deintegrate
+      pod install --repo-update
+      cd ..
 
-          cd ios
-          xcodebuild \
-            -workspace Runner.xcworkspace \
-            -scheme Runner \
-            -configuration Release \
-            -archivePath "$CM_BUILD_DIR/Runner.xcarchive" \
-            archive
+  - name: Build IPA
+    script: |
+      flutter build ipa --release
 
-          xcodebuild \
-            -exportArchive \
-            -archivePath "$CM_BUILD_DIR/Runner.xcarchive" \
-            -exportOptionsPlist /tmp/ExportOptions.plist \
-            -exportPath "$CM_BUILD_DIR/output"
+artifacts:
+  - build/ios/ipa/*.ipa
 
-    artifacts:
-      - build/ios/ipa/*.ipa
-      - $CM_BUILD_DIR/output/*.ipa
-      - /tmp/xcodebuild_logs/*.log
-
-    publishing:
-      app_store_connect:
-        api_key: $APP_STORE_CONNECT_PRIVATE_KEY
-        key_id: $APP_STORE_CONNECT_KEY_IDENTIFIER
-        issuer_id: $APP_STORE_CONNECT_ISSUER_ID
-        submit_to_testflight: true
+publishing:
+  email:
+    recipients:
+      - your@email.com
+```
