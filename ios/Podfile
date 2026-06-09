@@ -46,7 +46,7 @@ post_install do |installer|
     content = File.read(header)
     patched = content.gsub(
       '#import <Firebase/Firebase.h>',
-      '@import FirebaseCore;'
+      '@import FirebaseCore; @import FirebaseMessaging;'
     )
     File.write(header, patched) if patched != content
   end
