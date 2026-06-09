@@ -34,20 +34,21 @@ target 'Runner' do
 end
 
 post_install do |installer|
-  # Patch firebase_messaging header in pub cache via Flutter's symlink.
-  # FLTFirebaseMessagingPlugin.h uses a non-modular #import which breaks
-  # framework module builds — replace with proper @import statements.
-  messaging_header = File.expand_path(
+  # Patch all firebase plugin headers that use non-modular #import <Firebase/Firebase.h>.
+  # This breaks framework module builds — replace with proper @import statements.
+  [
     '../.symlinks/plugins/firebase_messaging/ios/Classes/FLTFirebaseMessagingPlugin.h',
-    __FILE__
-  )
-  if File.exist?(messaging_header)
-    content = File.read(messaging_header)
+    '../.symlinks/plugins/firebase_core/ios/Classes/FLTFirebaseCorePlugin.h',
+    '../.symlinks/plugins/firebase_core/ios/Classes/FLTFirebasePlugin.h',
+  ].each do |relative_path|
+    header = File.expand_path(relative_path, __FILE__)
+    next unless File.exist?(header)
+    content = File.read(header)
     patched = content.gsub(
       '#import <Firebase/Firebase.h>',
-      '@import FirebaseCore; @import FirebaseMessaging;'
+      '@import FirebaseCore;'
     )
-    File.write(messaging_header, patched) if patched != content
+    File.write(header, patched) if patched != content
   end
 
   installer.pods_project.targets.each do |target|
